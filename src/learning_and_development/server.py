@@ -92,11 +92,14 @@ def main() -> None:
         OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT: OpenTelemetry capture
     """
     # Add our Cloud exporters and logging to ADK's TracerProvider
-    setup_opentelemetry(
-        project_id=env.google_cloud_project,
-        agent_name=env.agent_name,
-        log_level=env.log_level,
-    )
+    try:
+        setup_opentelemetry(
+            project_id=env.google_cloud_project,
+            agent_name=env.agent_name,
+            log_level=env.log_level,
+        )
+    except Exception as e:
+        print(f"⚠️ Observability setup failed (continuing without it): {e}")
 
     uvicorn.run(
         app,

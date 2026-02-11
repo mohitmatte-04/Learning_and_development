@@ -1,27 +1,29 @@
 [project]
-name = "agent-foundation"
-version = "0.8.0"
+name = "learning-and-development"
+version = "0.1.0"
 description = "Opinionated, production-ready LLM Agent deployment with enterprise-grade infrastructure"
 readme = "README.md"
-authors = [
-    { name = "doug", email = "110487462+doughayden@users.noreply.github.com" }
-]
 requires-python = ">=3.13,<3.14"
 dependencies = [
     # Pin ADK to test releases before locking upgrades
     "google-adk==1.21.0",
     "google-auth>=2.40.3,<3.0.0",
+    "google-cloud-aiplatform>=1.130.0",
+    "google-cloud-bigquery>=3.38.0",
     "google-cloud-logging>=3.12.1,<4.0.0",
+    "numpy>=2.3.5",
     "opentelemetry-exporter-gcp-logging>=1.9.0a0,<2.0.0",
     "opentelemetry-exporter-otlp-proto-grpc==1.37.0",
     "opentelemetry-instrumentation-google-genai>=0.4b0,<0.5",
     "opentelemetry-instrumentation-logging>=0.58b0,<0.59",
+    "pandas>=3.0.0",
     "pydantic>=2.11.0,<3.0.0",
     "python-dotenv>=1.0.0,<2.0.0",
+    "pyyaml>=6.0.3",
 ]
 
 [project.scripts]
-server = "agent_foundation.server:main"
+server = "learning_and_development.server:main"
 
 [dependency-groups]
 dev = [
@@ -72,7 +74,7 @@ select = [
 [tool.mypy]
 python_version = "3.13"
 mypy_path = "src"
-packages = ["agent_foundation"]
+packages = ["learning_and_development"]
 exclude = ["init_template.py"]
 warn_return_any = true
 warn_unused_configs = true
@@ -92,10 +94,10 @@ show_error_codes = true
 source = ["src"]
 branch = true
 omit = [
-    "src/agent_foundation/**/__init__.py",
-    "src/agent_foundation/server.py",
-    "src/agent_foundation/**/agent.py",
-    "src/agent_foundation/utils/observability.py",
+    "src/learning_and_development/**/__init__.py",
+    "src/learning_and_development/server.py",
+    "src/learning_and_development/**/agent.py",
+    "src/learning_and_development/utils/observability.py",
 ]
 
 [tool.coverage.report]

@@ -30,7 +30,7 @@ terraform -chdir=terraform/main init/plan/apply       # Deploy
 
 ## Architecture Overview
 
-**ADK App Structure** (`src/agent_foundation/agent.py`):
+**ADK App Structure** (`src/learning_and_development/agent.py`):
 - `GlobalInstructionPlugin`: Dynamic instruction generation (InstructionProvider pattern)
 - `LoggingPlugin`: Agent lifecycle logging
 - `root_agent` (LlmAgent): gemini-2.5-flash (configurable `ROOT_AGENT_MODEL`), custom tools, callbacks
@@ -94,7 +94,7 @@ uv lock --upgrade               # Update all
 
 ## Project-Specific Patterns
 
-**Custom Tools:** Create in `src/agent_foundation/tools.py`, register in `agent.py`. Tool(name, description, func).
+**Custom Tools:** Create in `src/learning_and_development/tools.py`, register in `agent.py`. Tool(name, description, func).
 
 **Callbacks:** `LoggingCallbacks` (lifecycle), `add_session_to_memory` (session persist). All return `None` (observe-only).
 

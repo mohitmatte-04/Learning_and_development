@@ -1,7 +1,7 @@
-# agent-foundation
+# learning-and-development
 
-![CI/CD](https://github.com/doughayden/agent-foundation/actions/workflows/ci-cd.yml/badge.svg)
-![Code Quality](https://github.com/doughayden/agent-foundation/actions/workflows/code-quality.yml/badge.svg)
+![CI/CD](https://github.com/mohitmatte-04/learning-and-development/actions/workflows/ci-cd.yml/badge.svg)
+![Code Quality](https://github.com/mohitmatte-04/learning-and-development/actions/workflows/code-quality.yml/badge.svg)
 
 Opinionated, production-ready LLM Agent deployment with enterprise-grade infrastructure
 
@@ -13,14 +13,14 @@ Built for teams who need to move beyond prototypes and ship production AI agents
 
 ### How does this compare to Google's Agent Starter Pack?
 
-Google's [Agent Starter Pack](https://googlecloudplatform.github.io/agent-starter-pack/) is a feature-rich framework with extensive tooling and multi-platform CI/CD options. `agent-foundation` takes a different approach:
+Google's [Agent Starter Pack](https://googlecloudplatform.github.io/agent-starter-pack/) is a feature-rich framework with extensive tooling and multi-platform CI/CD options. `learning-and-development` takes a different approach:
 
 - **Opinionated foundation**: Single optimized path (GitHub Actions + Terraform) vs choose-your-adventure configuration
 - **Build optimization**: Multi-stage Docker purpose-built for `uv` with aggressive layer caching (~200MB, 5-10s rebuilds) vs generic catch-all patterns
 - **Cloud Run deployment**: Production-grade container hosting with autoscaling vs preference for Agent Engine runtime
 - **Low-level control**: Direct infrastructure management for teams who need flexibility and performance without the CLI abstraction
 
-This project distills proven patterns from the Starter Pack while prioritizing build efficiency, deployment simplicity, and infrastructure transparency. Use the Starter Pack for rapid prototyping with Agent Engine; use `agent-foundation` for thoughtfully-curated developer experience and production deployments requiring optimization and control.
+This project distills proven patterns from the Starter Pack while prioritizing build efficiency, deployment simplicity, and infrastructure transparency. Use the Starter Pack for rapid prototyping with Agent Engine; use `learning-and-development` for thoughtfully-curated developer experience and production deployments requiring optimization and control.
 
 ## Features
 
