@@ -1,5 +1,5 @@
 [project]
-name = "learning-and-development"
+name = "skills-agent"
 version = "0.1.0"
 description = "Opinionated, production-ready LLM Agent deployment with enterprise-grade infrastructure"
 readme = "README.md"
@@ -23,7 +23,7 @@ dependencies = [
 ]
 
 [project.scripts]
-server = "learning_and_development.server:main"
+server = "skills_agent.server:main"
 
 [dependency-groups]
 dev = [
@@ -74,7 +74,7 @@ select = [
 [tool.mypy]
 python_version = "3.13"
 mypy_path = "src"
-packages = ["learning_and_development"]
+packages = ["skills_agent"]
 exclude = ["init_template.py"]
 warn_return_any = true
 warn_unused_configs = true
