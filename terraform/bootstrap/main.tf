@@ -1,5 +1,5 @@
 data "dotenv" "config" {
-  filename = "${path.cwd}/.env"
+  filename = "${path.module}/../../.env"
 }
 
 # Get required Terraform variables from .env (app config) or terraform.tfvars (infrastructure config)
@@ -86,10 +86,14 @@ resource "random_id" "bucket_suffix" {
 resource "google_storage_bucket" "terraform_state" {
   project  = local.project
   name     = "terraform-state-${local.agent_name}-${random_id.bucket_suffix.hex}"
-  location = "US"
+  location = "us-central1"
 
   uniform_bucket_level_access = true
   public_access_prevention    = "enforced"
+
+  soft_delete_policy {
+    retention_duration_seconds = 0
+  }
 
   versioning {
     enabled = true
@@ -98,7 +102,7 @@ resource "google_storage_bucket" "terraform_state" {
 
 resource "google_artifact_registry_repository" "cloud_run" {
   project                = local.project
-  repository_id          = local.agent_name
+  repository_id          = replace(local.agent_name, "_", "-")
   format                 = "DOCKER"
   description            = "Cloud Run Docker repository: ${local.agent_name}"
   cleanup_policy_dry_run = false

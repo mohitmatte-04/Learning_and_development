@@ -1,0 +1,9 @@
+{
+    "datasets": [
+        {
+            "type": "bigquery",
+            "name": "onix-lnd.Learning_and_Development",
+            "description": "BigQuery dataset for natural language to SQL queries and data analysis. This dataset contains tables that can be queried using natural language."
+        }
+    ]
+}
