@@ -86,7 +86,7 @@ resource "random_id" "bucket_suffix" {
 resource "google_storage_bucket" "terraform_state" {
   project  = local.project
   name     = "terraform-state-${local.agent_name}-${random_id.bucket_suffix.hex}"
-  location = "US"
+  location = "us-central1"  # org policy custom.restrictBucketLocations requires us-central1
 
   uniform_bucket_level_access = true
   public_access_prevention    = "enforced"
@@ -94,11 +94,17 @@ resource "google_storage_bucket" "terraform_state" {
   versioning {
     enabled = true
   }
+
+  # Explicitly disable soft delete to satisfy org policy constraints/storage.softDeletePolicySeconds
+  soft_delete_policy {
+    retention_duration_seconds = 0
+  }
 }
 
 resource "google_artifact_registry_repository" "cloud_run" {
   project                = local.project
-  repository_id          = local.agent_name
+  # Artifact Registry does not allow underscores in repository IDs — replace with hyphens
+  repository_id          = replace(local.agent_name, "_", "-")
   format                 = "DOCKER"
   description            = "Cloud Run Docker repository: ${local.agent_name}"
   cleanup_policy_dry_run = false
