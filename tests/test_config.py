@@ -6,7 +6,7 @@ from unittest.mock import MagicMock
 import pytest
 from pydantic import ValidationError
 
-from learning_and_development.utils.config import (
+from skills_agent.utils.config import (
     ServerEnv,
     initialize_environment,
 )

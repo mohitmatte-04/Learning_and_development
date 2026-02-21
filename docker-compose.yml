@@ -3,8 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: learning-and-development:latest
-    container_name: learning-and-development-local
+    image: skills-agent:latest
+    container_name: skills-agent-local
     ports:
       # Bind to localhost only for security (prevents external network access)
       # To allow access from other machines, change to "8000:8000" (not recommended for development with sensitive data)

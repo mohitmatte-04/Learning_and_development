@@ -63,4 +63,4 @@ USER app
 EXPOSE 8000
 
 # Run the FastAPI server via main() for unified startup logic (logging, etc.)
-CMD ["python", "-m", "learning_and_development.server"]
+CMD ["python", "-m", "skills_agent.server"]

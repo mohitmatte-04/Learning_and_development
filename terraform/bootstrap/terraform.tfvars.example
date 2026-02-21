@@ -2,4 +2,4 @@
 # These values are used to configure Workload Identity Federation and GitHub Actions Variables
 
 repository_owner = "mohitmatte-04"
-repository_name  = "Learning_and_development"
+repository_name  = "skills-agent"

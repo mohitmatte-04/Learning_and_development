@@ -1,9 +1,9 @@
 # Override file for testing pre-built registry images instead of building locally
 # Usage:
-#   export REGISTRY_IMAGE="<your-registry-url>/learning-and-development:latest"
+#   export REGISTRY_IMAGE="<your-registry-url>/skills-agent:latest"
 #   docker compose -f docker-compose.yml -f docker-compose.registry.yml up
 
 services:
   app:
     image: ${REGISTRY_IMAGE}
-    container_name: learning-and-development-registry
+    container_name: skills-agent-registry

@@ -4,7 +4,7 @@ import logging
 
 import pytest
 
-from learning_and_development.callbacks import add_session_to_memory
+from skills_agent.callbacks import add_session_to_memory
 
 
 class TestAddSessionToMemory:

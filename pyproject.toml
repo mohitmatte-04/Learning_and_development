@@ -94,10 +94,10 @@ show_error_codes = true
 source = ["src"]
 branch = true
 omit = [
-    "src/learning_and_development/**/__init__.py",
-    "src/learning_and_development/server.py",
-    "src/learning_and_development/**/agent.py",
-    "src/learning_and_development/utils/observability.py",
+    "src/skills_agent/**/__init__.py",
+    "src/skills_agent/server.py",
+    "src/skills_agent/**/agent.py",
+    "src/skills_agent/utils/observability.py",
 ]
 
 [tool.coverage.report]

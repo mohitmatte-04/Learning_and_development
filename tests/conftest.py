@@ -8,6 +8,28 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 
+import os
+import sys
+from unittest.mock import MagicMock, patch
+
+# Set required environment variables BEFORE any skills_agent imports
+os.environ.setdefault("GOOGLE_CLOUD_PROJECT", "test-project")
+os.environ.setdefault("GOOGLE_CLOUD_LOCATION", "us-central1")
+os.environ.setdefault("AGENT_NAME", "skills_agent")
+os.environ.setdefault("DATASET_CONFIG_FILE", "bigquery_only_dataset_config.json")
+os.environ.setdefault("BQ_DATASET_ID", "test_dataset")
+os.environ.setdefault("BQ_DATA_PROJECT_ID", "test-project")
+os.environ.setdefault("BQ_COMPUTE_PROJECT_ID", "test-project")
+os.environ.setdefault("OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT", "false")
+
+# Mock module-level operations that hit network/filesystem during import
+# This is necessary because skills_agent.agent runs these at module level
+patch("skills_agent.agent.load_dataset_config", return_value={"datasets": []}).start()
+patch("skills_agent.agent.init_database_settings", return_value={}).start()
+patch("skills_agent.sub_agents.bigquery.tools.get_bigquery_client").start()
+# Mock genai Client to avoid API key requirements/validation during import
+patch("skills_agent.sub_agents.bigquery.tools.Client").start()
+
 # ADK Callback Mock Objects for testing callbacks
 class MockState:
     """Mock State object for ADK callback testing.
@@ -423,7 +445,7 @@ def mock_load_dotenv() -> Generator[MagicMock]:
     Yields:
         Mock object for load_dotenv function.
     """
-    with patch("learning_and_development.utils.config.load_dotenv") as mock:
+    with patch("skills_agent.utils.config.load_dotenv") as mock:
         yield mock
 
 
